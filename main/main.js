@@ -17,7 +17,8 @@ const {
   nativeTheme,
   shell,
   net,
-  WebContentsView
+  WebContentsView,
+  Notification
 } = electron
 
 crashReporter.start({
@@ -30,6 +31,26 @@ autoUpdater.logger = console
 autoUpdater.autoDownload = true
 autoUpdater.autoInstallOnAppQuit = true
 autoUpdater.allowDowngrade = true
+
+autoUpdater.on('download-progress', (progressObj) => {
+  const win = windows.getCurrent()
+  if (win) {
+    win.setProgressBar(progressObj.percent / 100)
+  }
+})
+
+autoUpdater.on('update-downloaded', (info) => {
+  const win = windows.getCurrent()
+  if (win) {
+    win.setProgressBar(-1)
+  }
+  const notification = new Notification({
+    title: 'StormBrowser',
+    body: 'Update downloaded. Installing now...'
+  })
+  notification.show()
+  autoUpdater.quitAndInstall()
+})
 
 if (process.argv.some(arg => arg === '-v' || arg === '--version')) {
   console.log('Min: ' + app.getVersion())

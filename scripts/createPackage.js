@@ -46,13 +46,10 @@ module.exports = function (platform, extraOptions) {
     const ext = {
       darwin: '.app',
       win32: '.exe',
-      linux: ['']
+      linux: ''
     }[context.electronPlatformName]
 
-    const IS_LINUX = context.electronPlatformName === 'linux'
-    const executableName = IS_LINUX
-      ? context.packager.appInfo.productFilename.toLowerCase().replace('-dev', '')
-      : context.packager.appInfo.productFilename
+    const executableName = context.packager.appInfo.productFilename
 
     const electronBinaryPath = path.join(
       context.appOutDir,

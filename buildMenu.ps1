@@ -6,7 +6,7 @@ if ($scripts.Count -eq 0) {
 
 while ($true) {
     Clear-Host
-    Write-Host "=== StormBrowser Build Menu ===" -ForegroundColor Cyan
+    Write-Host "=== StormBrowser Windows Build Menu ===" -ForegroundColor Cyan
     for ($i = 0; $i -lt $scripts.Count; $i++) {
         Write-Host "$($i + 1). $($scripts[$i].Name)"
     }

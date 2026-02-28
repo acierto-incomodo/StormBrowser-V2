@@ -13,7 +13,7 @@ fi
 
 while true; do
     clear
-    echo "=== StormBrowser Build Menu ==="
+    echo "=== StormBrowser Linux Build Menu ==="
     for i in "${!scripts[@]}"; do
         filename=$(basename "${scripts[$i]}")
         echo "$((i+1)). $filename"

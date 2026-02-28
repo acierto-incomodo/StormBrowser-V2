@@ -51,7 +51,8 @@ async function buildWindows () {
       oneClick: false,
       allowToChangeInstallationDirectory: true,
       artifactName: 'stormbrowser-${version}-${arch}-setup.exe',
-      license: 'LICENSE.txt'
+      license: 'LICENSE.txt',
+      differentialPackage: true
     },
     directories: {
       output: 'dist/app/',
