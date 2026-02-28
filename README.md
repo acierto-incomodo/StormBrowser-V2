@@ -1,118 +1,115 @@
-<p align="center">
-  <a href="https://wexond.net"><img src="static/icons/icon.png" width="256"></a>
-</p>
+# Min
 
-<div align="center">
-  <h1>Wexond Browser Base</h1>
+Min is a fast, minimal browser that protects your privacy. It includes an interface designed to minimize distractions, and features such as:
 
-[![Actions Status](https://github.com/wexond/desktop/workflows/Build/badge.svg)](https://github.com/wexond/desktop/actions)
-[![Downloads](https://img.shields.io/github/downloads/wexond/desktop/total.svg?style=flat-square)](https://wexond.net)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fwexond%2Fwexond.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fwexond%2Fwexond?ref=badge_shield)
-[![PayPal](https://img.shields.io/badge/PayPal-Donate-brightgreen?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCPPFUAL4R6M6&source=url)
-[![Discord](https://discordapp.com/api/guilds/307605794680209409/widget.png?style=shield)](https://discord.gg/P7Vn4VX)
+- Full-text search for visited pages
+- Ad and tracker blocking
+- Automatic reader view
+- Tasks (tab groups)
+- Bookmark tagging
+- Password manager integration
+- Dark theme
 
-Wexond Base is a modern web browser, built on top of modern web technologies such as `Electron` and `React`, that can also be used as a framework to create a custom web browser (see the [License](#license) section).
+Download Min from the [releases page](https://github.com/minbrowser/min/releases), or learn more on the [website](https://minbrowser.org/).
 
-</div>
+[![Downloads][DownloadsBadge]][DownloadsUrl]
+[![Discord][DiscordBadge]][DiscordUrl]
 
-# Table of Contents:
-- [Motivation](#motivation)
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [Downloads](#downloads)
-- [Contributing](#contributing)
-- [Development](#development)
-  - [Running](#running)
-- [Documentation](#documentation)
-- [License](#license)
+Min is made possible by these sponsors:
 
-# Motivation
+| [<img src="https://avatars.githubusercontent.com/u/6592155?v=4" width="40">](https://github.com/blackgwe) | [<img src="https://avatars.githubusercontent.com/u/49724477?v=4" width="40">](https://github.com/rafel-ioli) |[<img src="https://avatars.githubusercontent.com/u/237596?v=4" width="40">](https://github.com/idoru) |     |
+| ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |--------------------------------------------------------------------------------------------------------------- | --- |
+| [@blackgwe](https://github.com/blackgwe)                                                                            | [@rafel-ioli](https://github.com/rafel-ioli)                                                                        |[@idoru](https://github.com/idoru)                                                                        ||
 
-Compiling and editing Chromium directly may be challenging and time consuming, so we decided to build Wexond with modern web technologies. Hence, the development effort and time is greatly reduced. Either way Firefox is based on Web Components and Chrome implements new dialogs in WebUI (which essentially is hosted in WebContents).
+[Become a sponsor](https://github.com/sponsors/PalmerAL)
 
-# Features
+## Screenshots
 
-- **Wexond Shield** - Browse the web without any ads and don't let websites to track you. Thanks to the Wexond Shield powered by [Cliqz](https://github.com/cliqz-oss/adblocker), websites can load even 8 times faster!
-- **Chromium without Google services and low resources usage** - Since Wexond uses Electron under the hood which is based on only several and the most important Chromium components, it's not bloated with redundant Google tracking services and others.
-- **Fast and fluent UI** - The animations are really smooth and their timings are perfectly balanced.
-- **Highly customizable new tab page** - Customize almost an every aspect of the new tab page!
-- **Customizable browser UI** - Choose whether Wexond should have compact or normal UI.
-- **Tab groups** - Easily group tabs, so it's hard to get lost.
-- **Scrollable tabs**
-- **Partial support for Chrome extensions** - Install some extensions directly from Chrome Web Store\* (see [#110](https://github.com/wexond/wexond/issues/110)) (WIP)
+<img alt="The search bar, showing information from DuckDuckGo" src="http://minbrowser.org/tour/img/searchbar_duckduckgo_answers.png" width="650"/>
 
-## Other basic features
+<img alt="The Tasks Overlay" src="http://minbrowser.org/tour/img/tasks.png" width="650"/>
 
-- Downloads popup with currently downloaded items (download manager WebUI page is WIP)
-- History manager
-- Bookmarks bar & manager
-- Settings
-- Find in page
-- Dark and light theme
-- Omnibox with autocomplete algorithm similar to Chromium
-- State of the art tab system
+<img alt="Reader View" src="https://user-images.githubusercontent.com/10314059/53312382-67ca7d80-387a-11e9-9ccc-88ac592c9b1c.png" width="650"/>
 
-# Screenshots
+## Installing
 
-![image](https://user-images.githubusercontent.com/11065386/81024159-d9388f80-8e72-11ea-85e7-6c30e3b66554.png)
+You can find prebuilt binaries for Min [here](https://github.com/minbrowser/min/releases). Alternatively, skip to the section below for instructions on how to build Min directly from source.
 
-UI normal variant:
-![image](https://user-images.githubusercontent.com/11065386/81024186-f40b0400-8e72-11ea-976e-cd1ca1b43ad8.png)
+### Installation on Linux
 
-UI compact variant:
-![image](https://user-images.githubusercontent.com/11065386/81024222-13099600-8e73-11ea-9fc9-3c63a034403d.png)
-![image](https://user-images.githubusercontent.com/11065386/81024252-2ddc0a80-8e73-11ea-9f2f-6c9a4a175c60.png)
+- To install the .deb file, use `sudo dpkg -i /path/to/download`
+- To install the RPM build, use `sudo rpm -i /path/to/download --ignoreos`
+- On Arch Linux install from [AUR](https://aur.archlinux.org/packages/min-browser-bin).
+- On Raspberry Pi, you can install Min from [Pi-Apps](https://github.com/Botspot/pi-apps).
 
-# Downloads
-- [Stable and beta versions](https://github.com/wexond/desktop/releases)
-- [Nightlies](https://github.com/wexond/desktop-nightly/releases)
+## Getting Started
 
-# [Roadmap](https://github.com/wexond/wexond/projects)
+* The [wiki](https://github.com/minbrowser/min/wiki) provides an overview of the the features available in Min, a list of available keyboard shortcuts, and answers to some [frequently asked questions](https://github.com/minbrowser/min/wiki/FAQ).
+* Min supports installing userscripts to extend its functionality. See the [userscript documentation](https://github.com/minbrowser/min/wiki/userscripts) for instructions on writing userscripts, as well as a collection of scripts written by the community.
+* If you have questions about using Min, need help getting started with development, or want to talk about what we're working on, join our [Discord server](https://discord.gg/bRpqjJ4).
 
-# Contributing
+## Developing
 
-If you have found any bugs or just want to see some new features in Wexond, feel free to open an issue. Every suggestion is very valuable for us, as they help us improve the browsing experience. Also, please don't hesitate to open a pull request. This is really important to us and for the further development of this project.
+If you want to develop Min:
 
-By opening a pull request, you agree to the conditions of the [Contributor License Agreement](cla.md).
+- Install [Node](https://nodejs.org).
+- Run `npm install` to install dependencies.
+- Start Min in development mode by running `npm run start`.
+- After you make changes, press `alt+ctrl+r` (or `opt+cmd+r` on Mac) to reload the browser UI.
 
-# Development
+### Building binaries
 
-## Running
+In order to build Min from source, follow the installation instructions above, then use one of the following commands to create binaries:
 
-Before running Wexond, please ensure you have **latest** [`Node.js`](https://nodejs.org/en/) and [`Yarn`](https://classic.yarnpkg.com/en/docs/install/#windows-stable) installed on your machine.
+- `npm run buildWindows`
+- `npm run buildMacIntel`
+- `npm run buildMacArm`
+- `npm run buildDebian`
+- `npm run buildRaspi` (for 32-bit Raspberry Pi)
+- `npm run buildLinuxArm64` (for 64-bit Raspberry Pi or other ARM Linux)
+- `npm run buildRedhat`
 
-### Windows
+Depending on the platform you are building for, you may need to install additional dependencies:
 
-Make sure you have build tools installed. You can install them by running this command as **administrator**:
+- If you are building a macOS package, you'll need to install Xcode and the associated command-line tools. You may also need to set your default SDK to macOS 11.0 or higher, which you can do by running `export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk`. The exact command will depend on where Xcode is installed and which SDK version you're using.
+- To build on Windows, you'll need to install Visual Studio. Once it's installed, you may also need to run `npm config set msvs_version 2019` (or the appropriate version).
 
-```bash
-$ npm i -g windows-build-tools
-```
+## Contributing to Min
 
-```bash
-$ yarn # Install needed depedencies.
-$ yarn rebuild # Rebuild native modules using Electron headers.
-$ yarn dev # Run Wexond in development mode
-```
+Thanks for taking the time to contribute to Min!
 
-### More commands
+### Getting Help
 
-```bash
-$ yarn compile-win32 # Package Wexond for Windows
-$ yarn compile-linux # Package Wexond for Linux
-$ yarn compile-darwin # Package Wexond for macOS
-$ yarn lint # Runs linter
-$ yarn lint-fix # Runs linter and automatically applies fixes
-```
+If you're experiencing a bug or have a suggestion for how to improve Min, please open a [new issue](https://github.com/minbrowser/min/issues/new/choose).
 
-More commands can be found in [`package.json`](package.json).
+### Contributing Code
 
-# Documentation
+- Start by following the development instructions listed above.
+- The wiki has an [overview of Min's architecture](https://github.com/minbrowser/min/wiki/Architecture).
+- Min uses the [Standard](https://github.com/feross/standard) code style; [most editors](https://standardjs.com/#are-there-text-editor-plugins) have plugins available to auto-format your code.
+- If you see something that's missing, or run into any problems, please open an issue!
 
-Guides and the API reference are located in [`docs`](docs) directory.
+### Contributing Translations
 
-# License
+#### Adding a new language
 
-Usage of this project code and assets is disallowed.
+- Find the language code that goes with your language from [this list](https://source.chromium.org/chromium/chromium/src/+/main:ui/base/l10n/l10n_util.cc;l=68-259) (line 68 - 259).
+- In the `localization/languages` directory, create a new file, and name it "[your language code].json".
+- Open your new file, and copy the contents of the <a href="https://github.com/minbrowser/min/blob/master/localization/languages/en-US.json">localization/languages/en-US.json</a> file into your new file.
+- Change the "identifier" field in the new file to the language code from step 1.
+- Inside the file, replace each English string in the right-hand column with the equivalent translation.
+- (Optional) See your translations live by following the [development instructions](#installing) above. Min will display in the same language as your operating system, so make sure your computer is set to the same language that you're translating.
+- That's it! Make a pull request with your changes.
 
-By sending a Pull Request, you agree that your code may be relicensed or sublicensed.
+#### Updating an existing language
+
+- Find the language file for your language in the `localization/languages` directory.
+- Look through the file for any items that have a value of "null", or that have a comment saying "missing translation".
+- For each of these items, look for the item with the same name in the `en-US.json` file.
+- Translate the value from the English file, replace "null" with your translation, and remove the "missing translation" comment.
+- Make a pull request with the updated file.
+
+[DiscordBadge]: https://img.shields.io/discord/764269005195968512.svg?label=Discord&logo=discord&logoColor=white
+[DiscordUrl]: https://discord.gg/bRpqjJ4
+[DownloadsBadge]: https://img.shields.io/github/downloads/minbrowser/min/total.svg
+[DownloadsUrl]: https://github.com/minbrowser/min/releases
