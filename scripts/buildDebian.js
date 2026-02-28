@@ -36,6 +36,14 @@ async function afterPackageBuilt (path, arch) {
 
   console.log('Creating package (this may take a while)')
 
+  const publishConfig = {
+    provider: 'github',
+    owner: 'acierto-incomodo',
+    repo: 'StormBrowser-V2'
+  }
+  if (process.env.RELEASE_TYPE === 'prerelease') {
+    publishConfig.releaseType = 'prerelease'
+  }
   const options = {
     linux: {
       target: ['deb']
@@ -45,11 +53,7 @@ async function afterPackageBuilt (path, arch) {
       output: 'dist/app/'
     },
     deb: installerOptions,
-    publish: {
-      provider: 'github',
-      owner: 'acierto-incomodo',
-      repo: 'StormBrowser-V2'
-    }
+    publish: publishConfig
   }
 
   await builder.build({

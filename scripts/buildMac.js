@@ -3,6 +3,7 @@ const path = require('path')
 const { execSync } = require('child_process')
 const builder = require('electron-builder')
 const Arch = builder.Arch
+const Platform = builder.Platform
 
 const packageFile = require('./../package.json')
 const version = packageFile.version
@@ -22,24 +23,24 @@ require('./createPackage.js')('mac', { arch: toArch(platform) }).then(async func
     execSync('codesign -s - -a arm64 -f --deep ' + packagePath + '/StormBrowser.app')
   }
 
+  const publishConfig = {
+    provider: 'github',
+    owner: 'acierto-incomodo',
+    repo: 'StormBrowser-V2'
+  }
+  if (process.env.RELEASE_TYPE === 'prerelease') {
+    publishConfig.releaseType = 'prerelease'
+  }
   const options = {
     mac: {
       target: ['zip', 'dmg'],
       icon: 'icons/icon.icns',
-      publish: {
-        provider: 'github',
-        owner: 'acierto-incomodo',
-        repo: 'StormBrowser-V2'
-      }
+      publish: publishConfig
     },
     directories: {
       output: 'dist/app/'
     },
-    publish: {
-      provider: 'github',
-      owner: 'acierto-incomodo',
-      repo: 'StormBrowser-V2'
-    }
+    publish: publishConfig
   }
 
   await builder.build({

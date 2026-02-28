@@ -31,6 +31,14 @@ require('./createPackage.js')('linux', { arch: Arch.x64 }).then(function (path) 
 
   console.log('Creating package (this may take a while)')
 
+  const publishConfig = {
+    provider: 'github',
+    owner: 'acierto-incomodo',
+    repo: 'StormBrowser-V2'
+  }
+  if (process.env.RELEASE_TYPE === 'prerelease') {
+    publishConfig.releaseType = 'prerelease'
+  }
   const options = {
     linux: {
       target: ['rpm']
@@ -39,11 +47,7 @@ require('./createPackage.js')('linux', { arch: Arch.x64 }).then(function (path) 
       output: 'dist/app/'
     },
     rpm: installerOptions,
-    publish: {
-      provider: 'github',
-      owner: 'acierto-incomodo',
-      repo: 'StormBrowser-V2'
-    }
+    publish: publishConfig
   }
 
   builder.build({

@@ -5,6 +5,14 @@ const Platform = builder.Platform
 const Arch = builder.Arch
 
 require('./createPackage.js')('linux', {arch: Arch.x64}).then(function (path) {
+  const publishConfig = {
+    provider: 'github',
+    owner: 'acierto-incomodo',
+    repo: 'StormBrowser-V2'
+  }
+  if (process.env.RELEASE_TYPE === 'prerelease') {
+    publishConfig.releaseType = 'prerelease'
+  }
   const options = {
     linux: {
       target: ['AppImage'],
@@ -19,11 +27,7 @@ require('./createPackage.js')('linux', {arch: Arch.x64}).then(function (path) {
     directories: {
       output: 'dist/app/'
     },
-    publish: {
-      provider: 'github',
-      owner: 'acierto-incomodo',
-      repo: 'StormBrowser-V2'
-    }
+    publish: publishConfig
   }
 
   builder.build({

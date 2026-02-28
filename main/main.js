@@ -1,6 +1,7 @@
 const electron = require('electron')
 const fs = require('fs')
 const path = require('path')
+const { autoUpdater } = require('electron-updater')
 
 const {
   app, // Module to control application life.
@@ -24,6 +25,11 @@ crashReporter.start({
   uploadToServer: false,
   compress: true
 })
+
+autoUpdater.logger = console
+autoUpdater.autoDownload = true
+autoUpdater.autoInstallOnAppQuit = true
+autoUpdater.allowDowngrade = true
 
 if (process.argv.some(arg => arg === '-v' || arg === '--version')) {
   console.log('Min: ' + app.getVersion())
@@ -365,6 +371,8 @@ app.on('ready', function () {
   if (isInstallerRunning) {
     return
   }
+
+  autoUpdater.checkForUpdatesAndNotify()
 
   registerBundleProtocol(session.defaultSession)
 
