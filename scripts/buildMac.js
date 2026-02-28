@@ -19,7 +19,7 @@ function toArch (platform) {
 
 require('./createPackage.js')('mac', { arch: toArch(platform) }).then(async function (packagePath) {
   if (platform === 'arm64') {
-    execSync('codesign -s - -a arm64 -f --deep ' + packagePath + '/Min.app')
+    execSync('codesign -s - -a arm64 -f --deep ' + packagePath + '/StormBrowser.app')
   }
 
   const options = {

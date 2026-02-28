@@ -1,6 +1,7 @@
 const fs = require('fs')
 const builder = require('electron-builder')
 const Arch = builder.Arch
+const Platform = builder.Platform
 
 const packageFile = require('./../package.json')
 const version = packageFile.version
@@ -32,7 +33,7 @@ async function afterPackageBuilt (packagePath) {
     nsis: {
       oneClick: false,
       allowToChangeInstallationDirectory: true,
-      artifactName: 'min-${version}-${arch}-setup.exe',
+      artifactName: 'stormbrowser-${version}-${arch}-setup.exe',
       license: 'LICENSE.txt'
     },
     directories: {
